@@ -13,6 +13,8 @@ import 'TimerScreen.dart';
 
 
 class BottomNavigationWidget extends StatefulWidget {
+  static int currentIndex = 0;
+
   @override
   _BottomNavigationWidgetState createState() => _BottomNavigationWidgetState();
 }
@@ -76,6 +78,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
+            BottomNavigationWidget.currentIndex = index;
           });
         },
       ),
@@ -85,7 +88,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   @override
   void initState() {
-    list..add(ClockCustomizer((ClockModel model) => ClockScreen(model)))
+    list..add(ClockScreen())
+      //..add(ClockCustomizer((ClockModel model) => ClockScreen(model)))
       ..add(SecondScreen())
       ..add(TimerScreen())
       ..add(InnovationScreen());
