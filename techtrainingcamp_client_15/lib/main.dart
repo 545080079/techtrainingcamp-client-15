@@ -18,6 +18,20 @@ class MyApp extends StatelessWidget {
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text('My Clock'),
+          leading:CupertinoSwitch(
+            value: false,
+            onChanged: (bool value) {
+                if(value == true){
+                  value = false;
+                  print('F');
+                }
+                else {
+                  value = true;
+                  print('T');
+                }
+              },
+
+          ),
           actions: <Widget> [
             new IconButton(icon: new Icon(Icons.settings), onPressed: _pushList),
           ],
@@ -82,12 +96,14 @@ class ToolTwoWidget extends State<LoadImgByLoc> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new ListView(
+
         children: <Widget>[
           new Image(
             image: new AssetImage('images/clock9.png'),
           ),
           new Divider(),
         ],
+
       ),
     );
   }
