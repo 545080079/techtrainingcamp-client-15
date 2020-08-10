@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_clock_helper:
+    path: ../flutter_clock_helper
 
 
   # The following adds the Cupertino Icons font to your application.
