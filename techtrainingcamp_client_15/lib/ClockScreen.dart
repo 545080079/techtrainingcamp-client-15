@@ -16,8 +16,6 @@ class ClockScreen extends StatefulWidget {
 
 class _ClockScreen extends State<ClockScreen> {
   //final myClockBuilder = (ClockModel model) => ClockScreen(model);
-
-
   @override
   Widget build(BuildContext context) {
 
@@ -84,8 +82,9 @@ class Tick extends StatefulWidget {
 }
 
 class _TickState extends State<Tick> {
-  var time = DateTime.now().toString().substring(11, 19);
 
+  Timer timer;
+  var time = DateTime.now().toString().substring(11, 19);
   static const textStyle = const TextStyle(
     fontFamily: 'Lemonada',
     fontSize: 60,
@@ -93,18 +92,7 @@ class _TickState extends State<Tick> {
   @override
   Widget build(BuildContext context) {
 
-    Timer.periodic(Duration(seconds: 1), (timer) {
-      if(BottomNavigationWidget.currentIndex != 0)
-        return;
 
-      //在切换界面再切回后，产生内存泄漏问题
-      setState(() {
-        time = DateTime.now().toString().substring(11, 19);
-      });
-
-    });
-
-    print(DateTime.now().toString().substring(11, 19));
     return Container(
       padding: EdgeInsets.all(10.0),
       child: Text(
@@ -118,9 +106,18 @@ class _TickState extends State<Tick> {
   @override
   void initState() {
     super.initState();
+    timer = Timer.periodic(Duration(seconds: 2), (Timer _timer) {
+      //在切换界面再切回后，产生内存泄漏问题
+      if(BottomNavigationWidget.currentIndex != 0) {
+        timer.cancel();
+      }
 
+      setState(() {
+        time = DateTime.now().toString().substring(11, 19);
+        print(time);
+      });
 
-
+    });
   }
 
 }

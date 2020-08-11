@@ -79,6 +79,13 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           setState(() {
             _currentIndex = index;
             BottomNavigationWidget.currentIndex = index;
+
+            list.clear();
+            list..add(ClockScreen())
+              ..add(SecondScreen())
+              ..add(TimerScreen())
+              ..add(InnovationScreen());
+
           });
         },
       ),
