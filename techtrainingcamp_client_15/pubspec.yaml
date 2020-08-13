@@ -80,3 +80,8 @@ flutter:
     - family: Lemonada
       fonts:
         - asset: assets/Lemonada-VariableFont_wght.ttf
+
+    - family: Math
+      fonts:
+        - asset: assets/mathDef-1.ttf
+          style: italic

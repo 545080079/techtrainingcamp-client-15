@@ -2,8 +2,6 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clock_helper/customizer.dart';
-import 'package:flutter_clock_helper/model.dart';
 import 'package:techtrainingcamp_client_15/ClockScreen.dart';
 import 'package:techtrainingcamp_client_15/InnovationScreen.dart';
 import 'package:techtrainingcamp_client_15/SecondScreen.dart';
