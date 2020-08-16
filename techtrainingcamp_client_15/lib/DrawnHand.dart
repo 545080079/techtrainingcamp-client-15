@@ -60,8 +60,8 @@ class ClockPainter extends CustomPainter{
     final center = (Offset.zero & size).center;
     // We want to start at the top, not at the x-axis, so add pi/2.
     final angle = angleRadians - math.pi / 2.0;
-    final length = size.shortestSide * 0.5 * handSize;
-    final position = center + Offset(math.cos(angle), math.sin(angle)) * length;
+      final length = size.shortestSide * 0.5 * handSize;
+      final position = center + Offset(math.cos(angle), math.sin(angle)) * length;
     final linePaint = Paint()
       ..color = color
       ..strokeWidth = lineWidth
