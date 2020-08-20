@@ -7,19 +7,19 @@ import 'dart:math' as math;
 
 final radiansPerTick = radians(360 / 60);
 
+final radiusClock = 160.0;
+
 class BackgroundView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Stack(
-        children: [
-          CustomPaint(
-            painter: ViewPainter(
-                radius: 190
-            ),
+      child: Container(
+        child: CustomPaint(
+          painter: ViewPainter(
+              radius: radiusClock
           ),
-        ],
+        ),
       ),
     );
   }
@@ -41,35 +41,56 @@ class ViewPainter extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
 
+    //背景画笔
+    final bgPaint = Paint();
+     // ..color = Colors.lightBlueAccent.shade700;
+
     //时钟画笔
     final circlePaint = Paint()
-      ..color = Colors.black54
+      ..color = Colors.black
       ..strokeWidth = 1
       ..strokeCap = StrokeCap.square;
 
     //大刻度画笔
     final axisPaint = Paint()
-      ..color = Colors.tealAccent
+      ..color = Colors.blue
       ..strokeWidth = 3;
 
     //十二刻度画笔
     final axis12Paint = Paint()
-      ..color = Colors.tealAccent.shade400
+      ..color = Colors.lightBlueAccent
       ..strokeWidth = 3;
 
 
     //六十刻度画笔
     final axis60Paint = Paint()
-      ..color = Colors.tealAccent.shade700
+      ..color = Colors.lightBlue
       ..strokeWidth = 3;
+
+    //canvas.drawImage(image: 'images_b1_sunny.gif', Offset(0, 0), bgPaint);
+
+    canvas.drawShadow(
+        Path()
+          ..moveTo(-180.0, -240.0)..lineTo(150.0, -240.0)
+          ..lineTo(150.0, 100.0)..lineTo(-180.0, 100.0)
+          ..close(),
+        Colors.white60, 35, true);
+
+//    canvas.drawShadow(
+//        Path()
+//          ..moveTo(-80.0, 30.0)..lineTo(80.0, 30.0)
+//          ..lineTo(80.0, 80.0)..lineTo(-80.0, 80.0)
+//          ..close(),
+//        Colors.lightBlueAccent, 50, false);
+
 
     canvas.drawCircle(new Offset(0, 0), radius, circlePaint);
 
     //大刻度
-    canvas.drawLine(new Offset(0, -190), new Offset(0, -170), axisPaint);
-    canvas.drawLine(new Offset(190, 0), new Offset(170, 0), axisPaint);
-    canvas.drawLine(new Offset(0, 190), new Offset(0, 170), axisPaint);
-    canvas.drawLine(new Offset(-190, 0), new Offset(-170, 0), axisPaint);
+    canvas.drawLine(new Offset(0, -radiusClock), new Offset(0, -radiusClock + 20), axisPaint);
+    canvas.drawLine(new Offset(radiusClock, 0), new Offset(radiusClock - 20, 0), axisPaint);
+    canvas.drawLine(new Offset(0, radiusClock), new Offset(0, radiusClock - 20), axisPaint);
+    canvas.drawLine(new Offset(-radiusClock, 0), new Offset(-radiusClock + 20, 0), axisPaint);
 
 
     final center = (Offset.zero & size).center;
@@ -78,8 +99,8 @@ class ViewPainter extends CustomPainter{
     var cur = 0;
     var angleRadians = cur * radiansPerTick;
     var angle = angleRadians - math.pi;
-    var positionStart = center + Offset(math.cos(angle), math.sin(angle)) * 180;
-    var positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * 190;
+    var positionStart = center + Offset(math.cos(angle), math.sin(angle)) * (radiusClock - 10);
+    var positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * radiusClock;
 
     //十二刻度
     while (cur < 60) {
@@ -88,8 +109,8 @@ class ViewPainter extends CustomPainter{
       cur += 5;
       angleRadians = cur * radiansPerTick;
       angle = angleRadians - math.pi;
-      positionStart = center + Offset(math.cos(angle), math.sin(angle)) * 180;
-      positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * 190;
+      positionStart = center + Offset(math.cos(angle), math.sin(angle)) * (radiusClock - 10);
+      positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * radiusClock;
     }
 
     //六十刻度
@@ -100,8 +121,8 @@ class ViewPainter extends CustomPainter{
       cur += 1;
       angleRadians = cur * radiansPerTick;
       angle = angleRadians - math.pi;
-      positionStart = center + Offset(math.cos(angle), math.sin(angle)) * 185;
-      positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * 190;
+      positionStart = center + Offset(math.cos(angle), math.sin(angle)) * (radiusClock - 5);
+      positionEnd = center + Offset(math.cos(angle), math.sin(angle)) * radiusClock;
     }
 
 

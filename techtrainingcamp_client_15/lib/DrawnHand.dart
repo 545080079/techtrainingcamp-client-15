@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 class DrawnHand extends StatelessWidget{
 
   const DrawnHand({
@@ -66,6 +68,12 @@ class ClockPainter extends CustomPainter{
       ..color = color
       ..strokeWidth = lineWidth
       ..strokeCap = StrokeCap.square;
+
+//      canvas.drawShadow(
+//        Path()
+//          ..moveTo(0.0, 0.0)..lineTo(150.0, -240.0)
+//          ..close(),
+//        Colors.amber, 3, true);
 
     canvas.drawLine(center, position, linePaint);
   }

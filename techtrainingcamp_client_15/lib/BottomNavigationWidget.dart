@@ -35,21 +35,21 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.access_time,
+              Icons.aspect_ratio,
               color: _bottomNavigationColor,
             ),
             title: Text(
-                '时钟',
+                '电子钟',
               style: TextStyle(color: _bottomNavigationColor),
             )
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.timer_3,
+              Icons.av_timer,
               color: _bottomNavigationColor,
               ),
               title: Text(
-                '秒表',
+                '时钟',
                 style: TextStyle(color: _bottomNavigationColor),
               )
           ),BottomNavigationBarItem(

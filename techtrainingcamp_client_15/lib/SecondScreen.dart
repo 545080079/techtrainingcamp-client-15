@@ -61,23 +61,21 @@ class _DrawnClockState extends State<DrawnClock> {
     return Center(
       child: Stack(
         children: [
-          BackgroundView(
-
-          ),
-          DrawnHand(
-            color: Colors.cyanAccent,
+          BackgroundView(),//时钟模型
+          DrawnHand(//秒针
+            color: Colors.blueGrey,
             thickness: 5,
             size: 0.75,
             angleRadians: _now.second * radiansPerTick,
           ),
-          DrawnHand(
-            color: Colors.teal,
+          DrawnHand(//分针
+            color: Colors.white60,
             thickness: 5,
             size: 0.5,
             angleRadians: _now.minute * radiansPerTick,
           ),
-          DrawnHand(
-            color: Colors.lightBlueAccent,
+          DrawnHand(//时针
+            color: Colors.white,
             thickness: 5,
             size: 0.35,
             angleRadians: _now.hour * radiansPerTick,

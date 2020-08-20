@@ -7,11 +7,7 @@ class InnovationScreen extends StatefulWidget {
 }
 
 
-class tt {
-  final String x;
-  tt(this.x) : assert(x!= null);
-  tt.fromMapper(String z):x = z.substring(1,2);
-}
+
 class _InnovationScreenState extends State<InnovationScreen> {
 
   String join({String a, String b}) {

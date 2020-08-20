@@ -26,16 +26,22 @@ class _ClockScreen extends State<ClockScreen> {
 //      ),
       return Container(
 
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-          color: Colors.greenAccent.shade200,
-          gradient: LinearGradient(
-            colors: [Colors.lightBlueAccent.shade400, Colors.greenAccent.shade400],
-            begin: Alignment.centerRight,
-            end: Alignment.centerLeft,
-          ),
-        ),
+//        decoration: BoxDecoration(
+//          borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+//          color: Colors.greenAccent.shade200,
+//          gradient: LinearGradient(
+//            colors: [Colors.lightBlueAccent.shade400, Colors.greenAccent.shade400],
+//            begin: Alignment.centerRight,
+//            end: Alignment.centerLeft,
+//          ),
+//        ),
 
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/b1_rainy.gif'),
+                fit: BoxFit.cover
+            )
+        ),
 
       child: Container(
         child: Padding(
