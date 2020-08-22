@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:techtrainingcamp_client_15/DrawnHand.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/DrawnHand.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/backgroundView.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 
@@ -57,13 +58,38 @@ class _DrawnClockState extends State<DrawnClock> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DrawnHand(
-        color: Colors.deepPurpleAccent.shade400,
-        thickness: 16,
-        size: 0.8,
-        angleRadians: _now.second * radiansPerTick,
-      ),
+    return Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/b1_rainy.gif'),
+                fit: BoxFit.cover
+            )
+        ),
+
+        child: Stack(
+        children: [
+          BackgroundView(),//时钟模型
+          DrawnHand(//秒针
+            color: Colors.blueGrey,
+            thickness: 5,
+            size: 0.75,
+            angleRadians: _now.second * radiansPerTick,
+          ),
+          DrawnHand(//分针
+            color: Colors.white60,
+            thickness: 5,
+            size: 0.5,
+            angleRadians: _now.minute * radiansPerTick,
+          ),
+          DrawnHand(//时针
+            color: Colors.white,
+            thickness: 5,
+            size: 0.35,
+            angleRadians: _now.hour * radiansPerTick,
+          ),
+        ],
+      )
+
       );
   }
 }

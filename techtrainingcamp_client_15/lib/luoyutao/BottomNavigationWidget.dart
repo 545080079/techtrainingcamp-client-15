@@ -2,11 +2,11 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:techtrainingcamp_client_15/ClockScreen.dart';
-import 'package:techtrainingcamp_client_15/InnovationScreen.dart';
-import 'package:techtrainingcamp_client_15/SecondScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/ClockScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/InnovationScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/SecondScreen.dart';
 
-import 'TimerScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/TimerScreen.dart';
 
 
 
@@ -35,21 +35,21 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.access_time,
+              Icons.aspect_ratio,
               color: _bottomNavigationColor,
             ),
             title: Text(
-                '时钟',
+                '电子钟',
               style: TextStyle(color: _bottomNavigationColor),
             )
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.timer_3,
+              Icons.av_timer,
               color: _bottomNavigationColor,
               ),
               title: Text(
-                '秒表',
+                '时钟',
                 style: TextStyle(color: _bottomNavigationColor),
               )
           ),BottomNavigationBarItem(

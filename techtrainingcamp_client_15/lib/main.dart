@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'BottomNavigationWidget.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart';
 
 void main() {
   runApp(ClockApp());
