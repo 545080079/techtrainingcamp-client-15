@@ -84,7 +84,7 @@ class ViewPainter extends CustomPainter{
 //        Colors.lightBlueAccent, 50, false);
 
 
-    canvas.drawCircle(new Offset(0, 0), radius, circlePaint);
+    //canvas.drawCircle(new Offset(0, 0), radius, circlePaint);
 
     //大刻度
     canvas.drawLine(new Offset(0, -radiusClock), new Offset(0, -radiusClock + 20), axisPaint);

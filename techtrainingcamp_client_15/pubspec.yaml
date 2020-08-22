@@ -53,6 +53,8 @@ flutter:
      - images/b1_sunny.gif
      - images/b2_sunny.gif
      - images/b3_sunny.gif
+     - images/water.jpg
+     - images/sun.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

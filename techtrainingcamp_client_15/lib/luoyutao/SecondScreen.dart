@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:techtrainingcamp_client_15/DrawnHand.dart';
-import 'package:techtrainingcamp_client_15/backgroundView.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/DrawnHand.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/backgroundView.dart';
 import 'package:vector_math/vector_math_64.dart' show radians;
 
 
@@ -58,8 +58,15 @@ class _DrawnClockState extends State<DrawnClock> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
+    return Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/b1_rainy.gif'),
+                fit: BoxFit.cover
+            )
+        ),
+
+        child: Stack(
         children: [
           BackgroundView(),//时钟模型
           DrawnHand(//秒针

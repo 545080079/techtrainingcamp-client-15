@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_clock_helper/model.dart';
-import 'package:techtrainingcamp_client_15/BottomNavigationWidget.dart';
+
+import 'BottomNavigationWidget.dart';
 
 class ClockScreen extends StatefulWidget {
   //const ClockScreen(this.model);
@@ -15,37 +15,22 @@ class ClockScreen extends StatefulWidget {
 }
 
 class _ClockScreen extends State<ClockScreen> {
-  //final myClockBuilder = (ClockModel model) => ClockScreen(model);
+
   @override
   Widget build(BuildContext context) {
 
-    //_countdown();
-//    return Semantics.fromProperties(
-//      properties: SemanticsProperties(
-//        label: 'clock',
-//      ),
       return Container(
-
-//        decoration: BoxDecoration(
-//          borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-//          color: Colors.greenAccent.shade200,
-//          gradient: LinearGradient(
-//            colors: [Colors.lightBlueAccent.shade400, Colors.greenAccent.shade400],
-//            begin: Alignment.centerRight,
-//            end: Alignment.centerLeft,
-//          ),
-//        ),
 
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/b1_rainy.gif'),
+                image: AssetImage('images/sun.jpg'),
                 fit: BoxFit.cover
             )
         ),
 
       child: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
+        child: Center(
+          //padding: const EdgeInsets.all(15),
           child: Tick(),
         ),
 //        child: Stack(
@@ -64,19 +49,6 @@ class _ClockScreen extends State<ClockScreen> {
     );
   }
 
-  void _countdown() {
-    var seconds = 10;
-    const period = const Duration(seconds: 1);
-    Timer.periodic(period, (timer) {
-      seconds--;
-      print(seconds.toString() + '\t' + DateTime.now().toString());
-      if (seconds == 0) {
-        //倒计时秒数为0，取消定时器
-        timer.cancel();
-        timer = null;
-      }
-    });
-  }
 
 }
 
@@ -88,7 +60,7 @@ class Tick extends StatefulWidget {
 }
 
 class _TickState extends State<Tick> {
-  Timer timer;
+  static Timer timer;
   var time, hours, minutes, seconds;
   var flash = " : ";
   static const mathStyle = const TextStyle(
@@ -137,11 +109,13 @@ class _TickState extends State<Tick> {
   @override
   void initState() {
     super.initState();
-    timer = Timer.periodic(Duration(seconds: 1), (Timer _timer) {
+    timer = new Timer.periodic(Duration(seconds: 1), (Timer _timer) {
       //在切换界面再切回后，产生内存泄漏问题
       //通过BottomNavigationWidget.dart重新添加4个页面入List解决频繁内存泄漏，但还是有一次调用setState()是在dispose()之后
+
       if(BottomNavigationWidget.currentIndex != 0) {
         timer.cancel();
+        return;
       }
 
       setState(() {

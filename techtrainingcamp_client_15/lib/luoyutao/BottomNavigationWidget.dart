@@ -2,11 +2,11 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:techtrainingcamp_client_15/ClockScreen.dart';
-import 'package:techtrainingcamp_client_15/InnovationScreen.dart';
-import 'package:techtrainingcamp_client_15/SecondScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/ClockScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/InnovationScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/SecondScreen.dart';
 
-import 'TimerScreen.dart';
+import 'package:techtrainingcamp_client_15/luoyutao/TimerScreen.dart';
 
 
 
