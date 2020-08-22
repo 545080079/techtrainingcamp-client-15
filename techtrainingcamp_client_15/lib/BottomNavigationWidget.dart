@@ -2,8 +2,6 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_clock_helper/customizer.dart';
-import 'package:flutter_clock_helper/model.dart';
 import 'package:techtrainingcamp_client_15/ClockScreen.dart';
 import 'package:techtrainingcamp_client_15/InnovationScreen.dart';
 import 'package:techtrainingcamp_client_15/SecondScreen.dart';
@@ -13,6 +11,8 @@ import 'TimerScreen.dart';
 
 
 class BottomNavigationWidget extends StatefulWidget {
+  static int currentIndex = 0;
+
   @override
   _BottomNavigationWidgetState createState() => _BottomNavigationWidgetState();
 }
@@ -76,6 +76,14 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         onTap: (int index) {
           setState(() {
             _currentIndex = index;
+            BottomNavigationWidget.currentIndex = index;
+
+            list.clear();
+            list..add(ClockScreen())
+              ..add(SecondScreen())
+              ..add(TimerScreen())
+              ..add(InnovationScreen());
+
           });
         },
       ),
@@ -85,7 +93,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   @override
   void initState() {
-    list..add(ClockCustomizer((ClockModel model) => ClockScreen(model)))
+    list..add(ClockScreen())
+      //..add(ClockCustomizer((ClockModel model) => ClockScreen(model)))
       ..add(SecondScreen())
       ..add(TimerScreen())
       ..add(InnovationScreen());
