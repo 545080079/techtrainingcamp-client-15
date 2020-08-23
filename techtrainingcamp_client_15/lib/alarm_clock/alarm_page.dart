@@ -153,7 +153,7 @@ class _AlarmPage extends State<AlarmPage> {
                 Scaffold.of(context).hideCurrentSnackBar();
                 Scaffold.of(context).showSnackBar(
                     SnackBar(
-                      padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+                      //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
                       backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
                       duration: Duration(milliseconds: 500),
                       content: Text('已删除：${_alarmDataList[index].name}',style:TextStyle(fontSize: 18),),

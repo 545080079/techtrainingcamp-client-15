@@ -57,7 +57,7 @@ class TimerManager{
     Scaffold.of(context).hideCurrentSnackBar();
     Scaffold.of(context).showSnackBar(
       SnackBar(
-        padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+        //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
         backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
         duration: Duration(milliseconds: 500),
         content: Text('${durationTemp.inHours}:${durationTemp.inMinutes-durationTemp.inHours*60}:${durationTemp.inSeconds-durationTemp.inMinutes*60}后响铃',style:TextStyle(fontSize: 18),),

@@ -7,8 +7,6 @@ import 'package:techtrainingcamp_client_15/luoyutao/ClockScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/InnovationScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/SecondScreen.dart';
 
-import 'package:techtrainingcamp_client_15/luoyutao/TimerScreen.dart';
-
 
 
 class BottomNavigationWidget extends StatefulWidget {
