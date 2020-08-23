@@ -35,8 +35,12 @@ class _AlarmPage extends State<AlarmPage> {
 
     _prefs.then((SharedPreferences prefs) {
       var temp = prefs.getStringList("AlarmIDList");
-      return temp == null ? [] : temp;
-    }).then((value) => _alarmIDList = value);
+      return temp ;
+    }).then((value){
+      if(value!=null){
+        _alarmIDList = value;
+      }
+    });
 
     _prefs.then((SharedPreferences prefs) {
       List<AlarmData> temp = [];
@@ -139,7 +143,31 @@ class _AlarmPage extends State<AlarmPage> {
         child: ListView.builder(
           itemCount: _alarmDataList.length,
           itemBuilder: (context, index) {
-            return _getTimeBar(index);
+            return Dismissible(
+              // Key
+              key: Key('key${_alarmDataList[index].alarmID}'),
+              // Child
+              child: _getTimeBar(index),
+              onDismissed: (direction){
+                // 删除后刷新列表，以达到真正的删除
+                setState(() {
+                  _delAlarm(index);
+                });
+              },
+              background: Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                alignment: Alignment.centerLeft,
+                color: Color.fromRGBO(240, 190, 190, 0.2),
+                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,),
+              ),
+              secondaryBackground: Container(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                alignment: Alignment.centerRight,
+                color: Color.fromRGBO(240, 190, 190, 0.2),
+                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,),
+              ),
+            );
+//              _getTimeBar(index);
           },
           padding: EdgeInsets.all(10),
           shrinkWrap: true,
@@ -151,7 +179,7 @@ class _AlarmPage extends State<AlarmPage> {
   // 一个时间条，根据_alarmDataList中的内容，创建一个闹钟条
   _getTimeBar(int index) {
     return Container(
-      height: 100.0,
+      height: 90.0,
       child: Stack(
         alignment: Alignment.center, // 堆叠位置方式
         children: <Widget>[
@@ -160,6 +188,10 @@ class _AlarmPage extends State<AlarmPage> {
               child: Builder(
                   builder: (BuildContext context) {
                     return ListTile(
+//                      hoverColor: Colors.red,
+//                      focusColor: Colors.amberAccent,
+//                      selectedTileColor: Colors.blue,
+//                      tileColor: Color.fromRGBO(255, 255, 255, 0.01),
                       leading: Icon(Icons.alarm_add, color: Colors.cyan,),
                       title: Text("${_alarmDataList[index].time
                           .hour}:${_alarmDataList[index].time.minute}",

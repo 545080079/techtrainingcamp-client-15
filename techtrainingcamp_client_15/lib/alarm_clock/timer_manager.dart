@@ -25,15 +25,17 @@ class TimerManager{
     var period = Duration(seconds: alarm.ringInterval * 60);
     Timer.periodic(period, (timer) {
       _repeatTimerMap[alarm.alarmID]=timer;
-      if (count >= alarm.ringFrequency-1 || !alarm.isOpen) { // 闹钟关闭时就取消回调
+      if (count >= alarm.ringFrequency || !alarm.isOpen) { // 闹钟关闭时就取消回调
         //取消定时器，避免无限回调
         timer.cancel();
         timer = null;
       }
-      count++;
-      // 播放音乐
-      _playMusic(context,alarm);
-      print("第$count次响铃:${alarm.name},${DateTime.now().toString()}");
+      else{
+        count++;
+        // 播放音乐
+        _playMusic(context,alarm);
+        print("第$count次响铃:${alarm.name},${DateTime.now().toString()}");
+      }
     });
   }
 
