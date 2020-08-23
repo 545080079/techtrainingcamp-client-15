@@ -114,6 +114,7 @@ class _TickState extends State<Tick> {
       //通过BottomNavigationWidget.dart重新添加4个页面入List解决频繁内存泄漏，但还是有一次调用setState()是在dispose()之后
 
       if(BottomNavigationWidget.currentIndex != 0) {
+        _timer.cancel();
         timer.cancel();
         return;
       }
