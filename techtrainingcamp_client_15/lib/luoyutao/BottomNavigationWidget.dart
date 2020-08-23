@@ -2,6 +2,7 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
+import 'package:techtrainingcamp_client_15/alarm_clock/alarm_page.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/ClockScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/InnovationScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/SecondScreen.dart';
@@ -21,17 +22,19 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   final _bottomNavigationColor = Colors.cyan;
   List<Widget> list = List();
   int _currentIndex = 0;
+  static final AlarmPage _alarmPage = AlarmPage();  // 初始化时把数据预加载一遍
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text('My Clock'),
-      ),
+//      appBar: new AppBar(
+//        title: new Text('My Clock'),
+//      ),
       body: new Center(
         child: list[_currentIndex]
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromRGBO(34, 61, 90, 1),
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -81,7 +84,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             list.clear();
             list..add(ClockScreen())
               ..add(SecondScreen())
-              ..add(TimerScreen())
+              ..add(_alarmPage)
               ..add(InnovationScreen());
 
           });
@@ -96,7 +99,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     list..add(ClockScreen())
       //..add(ClockCustomizer((ClockModel model) => ClockScreen(model)))
       ..add(SecondScreen())
-      ..add(TimerScreen())
+      ..add(_alarmPage)
       ..add(InnovationScreen());
     super.initState();
   }
