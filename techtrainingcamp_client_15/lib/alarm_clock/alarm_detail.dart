@@ -16,7 +16,7 @@ class AlarmDetailPage extends StatefulWidget{
 class _AlarmDetailPage extends State<AlarmDetailPage> {
   AlarmData _alarmData;
   _AlarmDetailPage(this._alarmData);
-  TextStyle _textStyleLarge = TextStyle(fontSize: 22,color: Colors.black,);
+  TextStyle _textStyleLarge = TextStyle(fontSize: 20,color: Colors.black,);
   TextStyle _textStyleSmall = TextStyle(fontSize: 18,color: Colors.black,);
 
   @override
@@ -30,7 +30,7 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
               Navigator.of(context).pop(null);
             }
           ),
-          backgroundColor: Color.fromRGBO(241 , 180, 180, 0.8),
+          backgroundColor: Color.fromRGBO(241 , 180, 180, 0.85),
           actions: <Widget>[
             IconButton(icon: Icon(Icons.check),
                 onPressed: (){
@@ -39,7 +39,7 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
           ],
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(10, 50, 10, 10), //内边距
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 10), //内边距
           alignment: Alignment.center, //内容位置
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -200,8 +200,8 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
     _getRepetitionDialog(){
       return showModalBottomSheet<int>(
           context: context,
-          shape:RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-          backgroundColor:Color.fromRGBO(120, 160, 190, 1),
+          shape:RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),//圆角
+          backgroundColor:Color.fromRGBO(120, 160, 180, 1.0),
           barrierColor:Color.fromRGBO(0, 0, 0, 0.5),
           builder: (context){
             return Container(
@@ -297,8 +297,11 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                     Align(
                         alignment: Alignment.centerRight,
                         child: Container(
-                          child: Text(_alarmData.transRepeat2Str(), style: _textStyleLarge),
-                          padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                          child: Text(_alarmData.transRepeat2Str(),
+                            style: _textStyleLarge,
+                            overflow: TextOverflow.ellipsis, //文本过长时的显示方式
+                            maxLines: 1,),
+                          padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
                         )
                     ),
                     Align(
@@ -348,8 +351,11 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                         Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              child: Text(_alarmData.ringName, style: _textStyleLarge),
-                              padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                              child: Text(_alarmData.ringName,
+                                style: _textStyleLarge,
+                                overflow: TextOverflow.ellipsis, //文本过长时的显示方式
+                                maxLines: 1,),
+                              padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
                             )
                         ),
                         Align(
@@ -467,8 +473,11 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                         Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              child: Text(_alarmData.name, style: _textStyleLarge),
-                              padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                              child: Text(_alarmData.name,
+                                style: _textStyleLarge,
+                                overflow: TextOverflow.ellipsis, //文本过长时的显示方式
+                                maxLines: 1,),
+                              padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
                             )
                         ),
                         Align(

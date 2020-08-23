@@ -129,7 +129,8 @@ class _AlarmPage extends State<AlarmPage> {
   // 加载闹钟条，可能没有闹钟，需要判断一下
   _alarmTimeBarList() {
     if (_alarmDataList.length == 0) {
-      return Center(
+      return Container(
+          padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
           child: Column(
             children: [
               Icon(Icons.alarm_off, size: 100,color: Colors.black54,),
@@ -149,10 +150,20 @@ class _AlarmPage extends State<AlarmPage> {
               // Child
               child: _getTimeBar(index),
               onDismissed: (direction){
+                Scaffold.of(context).hideCurrentSnackBar();
+                Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+                      backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+                      duration: Duration(milliseconds: 500),
+                      content: Text('已删除：${_alarmDataList[index].name}',style:TextStyle(fontSize: 18),),
+                    )
+                );
                 // 删除后刷新列表，以达到真正的删除
                 setState(() {
                   _delAlarm(index);
                 });
+
               },
               background: Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -200,7 +211,8 @@ class _AlarmPage extends State<AlarmPage> {
                         "${_alarmDataList[index].name}；${_alarmDataList[index]
                             .transRepeat2Str()}",
                         style: _textStyleSmall,
-                      ),
+                        overflow: TextOverflow.ellipsis, //文本过长时的显示方式
+                        maxLines: 1,),
                       onTap: () {
                         Navigator.of(context).push( // 跳转页面
                             MaterialPageRoute(
