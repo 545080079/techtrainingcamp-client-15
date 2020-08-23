@@ -64,11 +64,11 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               )
           ),BottomNavigationBarItem(
               icon: Icon(
-                Icons.all_inclusive,
+                Icons.beach_access,
                 color: _bottomNavigationColor,
               ),
               title: Text(
-                '其它',
+                '天气',
                 style: TextStyle(color: _bottomNavigationColor),
               )
           ),
