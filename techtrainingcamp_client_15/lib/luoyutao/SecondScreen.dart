@@ -63,7 +63,7 @@ class _DrawnClockState extends State<DrawnClock> {
           color: Colors.black87,
             image: DecorationImage(
                 image: AssetImage('images/b1_rainy.gif'),
-                fit: BoxFit.cover
+                fit: BoxFit.fill
             )
         ),
 
