@@ -5,13 +5,10 @@ import 'package:techtrainingcamp_client_15/weather/d9l.dart';
 import 'package:techtrainingcamp_client_15/weather/home_page.dart';
 import 'package:techtrainingcamp_client_15/weather/sp_client.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:techtrainingcamp_client_15/weather/home_page_store.dart';
 
 import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart';
-
-
 
 
 void main() {
@@ -29,6 +26,7 @@ void main() {
 
 class ClockApp extends StatelessWidget {
   // This widget is the root of your application.
+  static GlobalKey<NavigatorState> navigatorKey=GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +35,9 @@ class ClockApp extends StatelessWidget {
         title: 'My Clock',
         debugShowCheckedModeBanner: false, //不显示debug图标
         theme: ThemeData.light(),
-        home: BottomNavigationWidget()
+        home: BottomNavigationWidget(),
+        navigatorKey:navigatorKey,
+
     );
   }
 

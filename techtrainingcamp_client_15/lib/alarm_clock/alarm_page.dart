@@ -11,10 +11,11 @@ import 'alarm_digital_dial.dart';
 /*
 闹钟主界面
  */
+
 class AlarmPage extends StatefulWidget{
 
   AlarmPage({Key key}):super(key:key) {
-    _AlarmPage().init();
+    _AlarmPage.init();
   }
 
 //  AlarmPage({Key key}):super(key:key);
@@ -30,7 +31,7 @@ class _AlarmPage extends State<AlarmPage> {
   static bool _isInit = false;
   TextStyle _textStyleLarge = TextStyle(fontSize: 24,color: Colors.black);
   TextStyle _textStyleSmall = TextStyle(fontSize: 18,color: Colors.black);
-  init(){
+  static init(){
     if (_isInit) return;
 
     _prefs.then((SharedPreferences prefs) {
@@ -53,7 +54,7 @@ class _AlarmPage extends State<AlarmPage> {
       _alarmDataList = value;
       _isInit = true;
       for(int i=0;i<_alarmDataList.length;i++){
-          TimerManager.setAlarmTimer(context, _alarmDataList[i]);// 把之前的闹钟设置一下
+        TimerManager.setAlarmTimer(_alarmDataList[i]);// 把之前的闹钟设置一下
       }
     });
 
@@ -150,13 +151,17 @@ class _AlarmPage extends State<AlarmPage> {
               // Child
               child: _getTimeBar(index),
               onDismissed: (direction){
-                Scaffold.of(context).hideCurrentSnackBar();
-                Scaffold.of(context).showSnackBar(
+                Scaffold.of(this.context).hideCurrentSnackBar();
+                Scaffold.of(this.context).showSnackBar(
                     SnackBar(
-                      //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+//                      padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
                       backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
                       duration: Duration(milliseconds: 500),
-                      content: Text('已删除：${_alarmDataList[index].name}',style:TextStyle(fontSize: 18),),
+                      content: Container(
+                        height: 25,
+                        alignment: Alignment.center,
+                        child: Text('已删除：${_alarmDataList[index].name}',style:TextStyle(fontSize: 18,color: Colors.white70),),
+                      )
                     )
                 );
                 // 删除后刷新列表，以达到真正的删除
@@ -224,7 +229,7 @@ class _AlarmPage extends State<AlarmPage> {
                           (context as Element).markNeedsBuild();
                           if (value == null) return;
                           _alarmDataList[index] = value;
-                          TimerManager.setAlarmTimer(context, _alarmDataList[index]);
+                          _noteSnackBar(TimerManager.setAlarmTimer( _alarmDataList[index]));
                           setState(() {
                             _alarmDataList[index].isOpen = true;
                           });
@@ -269,10 +274,10 @@ class _AlarmPage extends State<AlarmPage> {
                 setState(() {
                   _alarmDataList[index].isOpen = value;
                   if(value){
-                    TimerManager.setAlarmTimer(context,_alarmDataList[index]);
+                    _noteSnackBar(TimerManager.setAlarmTimer(_alarmDataList[index]));
                   }
                   else{
-                    TimerManager.cancelAlarmTimer(context,_alarmDataList[index].alarmID);
+                    TimerManager.cancelAlarmTimer(_alarmDataList[index].alarmID);
                   }
                 });
               },
@@ -298,20 +303,37 @@ class _AlarmPage extends State<AlarmPage> {
     prefs.setStringList("AlarmIDList", _alarmIDList);
     prefs.setStringList(alarm.alarmID, alarm.transAll2Str());
     // 设置定时器
-    TimerManager.setAlarmTimer(context,_alarmDataList[_alarmDataList.length-1]);
+    _noteSnackBar(TimerManager.setAlarmTimer(_alarmDataList[_alarmDataList.length-1]));
   }
 
   // 删除闹钟
   _delAlarm(int index) async {
     _alarmIDList.remove(_alarmDataList[index].alarmID);
     // 取消闹钟
-    TimerManager.cancelAlarmTimer(context,_alarmDataList[index].alarmID);
+    TimerManager.cancelAlarmTimer(_alarmDataList[index].alarmID);
     // 从本地删除
     final SharedPreferences prefs = await _prefs;
     prefs.remove(_alarmDataList[index].alarmID);
     prefs.setStringList("AlarmIDList", _alarmIDList);
 
     _alarmDataList.removeAt(index);
+  }
+
+  // 弹出提醒多久后响铃
+  _noteSnackBar(String note){
+    Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+//        padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+        backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+        duration: Duration(milliseconds: 500),
+        content: Container(
+          height: 25,
+          alignment: Alignment.center,
+          child: Text(note ,style:TextStyle(fontSize: 18,color: Colors.white70),),
+        )
+      )
+    );
   }
 }
 
