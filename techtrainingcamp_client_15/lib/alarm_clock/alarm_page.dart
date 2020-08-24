@@ -173,14 +173,14 @@ class _AlarmPage extends State<AlarmPage> {
               background: Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 alignment: Alignment.centerLeft,
-                color: Color.fromRGBO(240, 190, 190, 0.2),
-                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,),
+                color: Color.fromRGBO(240, 190, 190, 0.3),
+                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,size: 30,),
               ),
               secondaryBackground: Container(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                 alignment: Alignment.centerRight,
-                color: Color.fromRGBO(240, 190, 190, 0.2),
-                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,),
+                color: Color.fromRGBO(240, 190, 190, 0.3),
+                child: Icon(Icons.delete, color: Colors.deepOrangeAccent,size: 30),
               ),
             );
 //              _getTimeBar(index);
@@ -208,7 +208,7 @@ class _AlarmPage extends State<AlarmPage> {
 //                      focusColor: Colors.amberAccent,
 //                      selectedTileColor: Colors.blue,
 //                      tileColor: Color.fromRGBO(255, 255, 255, 0.01),
-                      leading: Icon(Icons.alarm_add, color: Colors.cyan,),
+                      leading: Icon(_alarmDataList[index].isOpen? Icons.alarm_on:Icons.alarm_off, color: Colors.cyan,),
                       title: Text("${_alarmDataList[index].time
                           .hour}:${_alarmDataList[index].time.minute}",
                         style: _textStyleLarge,),
@@ -233,6 +233,7 @@ class _AlarmPage extends State<AlarmPage> {
                           setState(() {
                             _alarmDataList[index].isOpen = true;
                           });
+                          _updateAlarm(index);
                         }
                         );
                       },
@@ -269,15 +270,20 @@ class _AlarmPage extends State<AlarmPage> {
           Align(
             alignment: Alignment.centerRight,
             child: Switch(
+//              inactiveTrackColor: Colors.white70,
+//              inactiveThumbColor: Colors.,
+              activeColor: Colors.cyan,
               value: _alarmDataList[index].isOpen, //当前状态
               onChanged: (value) { //重新构建页面
                 setState(() {
                   _alarmDataList[index].isOpen = value;
                   if(value){
                     _noteSnackBar(TimerManager.setAlarmTimer(_alarmDataList[index]));
+                    _updateAlarm(index);
                   }
                   else{
                     TimerManager.cancelAlarmTimer(_alarmDataList[index].alarmID);
+                    _updateAlarm(index);
                   }
                 });
               },
@@ -304,6 +310,16 @@ class _AlarmPage extends State<AlarmPage> {
     prefs.setStringList(alarm.alarmID, alarm.transAll2Str());
     // 设置定时器
     _noteSnackBar(TimerManager.setAlarmTimer(_alarmDataList[_alarmDataList.length-1]));
+  }
+
+  _updateAlarm(int index)async{
+    if(index>=_alarmDataList.length)return;
+    AlarmData alarm = _alarmDataList[index];
+    // 保存到本地
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setStringList("AlarmIDList", _alarmIDList);
+    prefs.setStringList(alarm.alarmID, alarm.transAll2Str());
+    // 设置定时器
   }
 
   // 删除闹钟

@@ -60,6 +60,7 @@ class _DrawnClockState extends State<DrawnClock> {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
+          color: Colors.black87,
             image: DecorationImage(
                 image: AssetImage('images/b1_rainy.gif'),
                 fit: BoxFit.cover
