@@ -1,0 +1,19 @@
+{
+  "change_city": "选择城市",
+  "change_language": "选择语言",
+  "about": "关于",
+  "wind": "风向",
+  "humidity": "湿度",
+  "pressure": "气压",
+  "English": "英语",
+  "Chinese": "中文",
+  "check_network": "请检查你的网络状态",
+  "cancel": "取消",
+  "city_name": "请输入城市名称",
+  "apparent": "体感",
+  "air": "空气",
+  "lifestyle": "生活指数",
+  "data_sources": "数据来源：和风天气",
+  "weather": "天气预报"
+
+}

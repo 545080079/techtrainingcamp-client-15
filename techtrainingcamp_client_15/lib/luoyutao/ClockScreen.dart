@@ -61,15 +61,21 @@ class Tick extends StatefulWidget {
 
 class _TickState extends State<Tick> {
   static Timer timer;
-  var time, hours, minutes, seconds;
+  var time;
+  var hours = DateTime.now().toString().substring(11, 19).toString().substring(0, 2);
+  var minutes = DateTime.now().toString().substring(11, 19).toString().substring(3, 5);
+  var seconds = DateTime.now().toString().substring(11, 19).toString().substring(6);
   var flash = " : ";
+
   static const mathStyle = const TextStyle(
     fontFamily: 'Math',
     fontSize: 60,
+    color: Colors.white
   );
   static const defultStyle = const TextStyle(
     fontFamily: 'Lemonada',
     fontSize: 60,
+    color: Colors.white
   );
   @override
   Widget build(BuildContext context) {
@@ -114,6 +120,7 @@ class _TickState extends State<Tick> {
       //通过BottomNavigationWidget.dart重新添加4个页面入List解决频繁内存泄漏，但还是有一次调用setState()是在dispose()之后
 
       if(BottomNavigationWidget.currentIndex != 0) {
+        _timer.cancel();
         timer.cancel();
         return;
       }

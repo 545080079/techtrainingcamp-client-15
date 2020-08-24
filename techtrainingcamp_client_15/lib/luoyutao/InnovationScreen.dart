@@ -34,5 +34,3 @@ class WeatherScreen extends StatelessWidget {
     );
   }
 }
-
-

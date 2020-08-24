@@ -51,7 +51,19 @@ class TimerManager{
     else {
       firstTime = DateTime(curTime.year, curTime.month, curTime.day + 1, alarm.time.hour, alarm.time.minute, alarm.time.second);
     }
-    print('比较两个时间差：${firstTime.difference(curTime)}'); //  比较两个时间 差 小时数
+//    print('闹钟在：${firstTime.difference(curTime)}后响铃'); //  比较两个时间 差 小时数
+    Duration durationTemp = firstTime.difference(curTime);
+    print(durationTemp.toString());
+    Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+        backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+        duration: Duration(milliseconds: 500),
+        content: Text('${durationTemp.inHours}:${durationTemp.inMinutes-durationTemp.inHours*60}:${durationTemp.inSeconds-durationTemp.inMinutes*60}后响铃',style:TextStyle(fontSize: 18),),
+      )
+    );
+
     Duration cur2Target = firstTime.difference(curTime);
     Timer.periodic(cur2Target, (timer) {
       _firstTimerMap[alarm.alarmID] = timer;

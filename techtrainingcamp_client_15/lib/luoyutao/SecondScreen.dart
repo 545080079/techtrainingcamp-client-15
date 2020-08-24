@@ -70,19 +70,19 @@ class _DrawnClockState extends State<DrawnClock> {
         children: [
           BackgroundView(),//时钟模型
           DrawnHand(//秒针
-            color: Colors.blueGrey,
+            color: Colors.teal,
             thickness: 5,
             size: 0.75,
             angleRadians: _now.second * radiansPerTick,
           ),
           DrawnHand(//分针
-            color: Colors.white60,
+            color: Colors.lightGreen,
             thickness: 5,
             size: 0.5,
             angleRadians: _now.minute * radiansPerTick,
           ),
           DrawnHand(//时针
-            color: Colors.white,
+            color: Colors.lightBlueAccent,
             thickness: 5,
             size: 0.35,
             angleRadians: _now.hour * radiansPerTick,

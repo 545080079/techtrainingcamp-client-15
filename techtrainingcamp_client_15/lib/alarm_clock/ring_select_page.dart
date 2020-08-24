@@ -34,13 +34,11 @@ class _RingManagerPage extends State<RingManagerPage> {
 
   @override
   void deactivate() {
-    // TODO: implement deactivate
     super.deactivate();
     _player.stop();
   }
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _player.stop();
   }
@@ -50,7 +48,7 @@ class _RingManagerPage extends State<RingManagerPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("选择铃声"),
-          backgroundColor: Color.fromRGBO(241 , 180, 180, 0.8),
+          backgroundColor: Color.fromRGBO(241 , 180, 180, 0.85),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -72,7 +70,7 @@ class _RingManagerPage extends State<RingManagerPage> {
           ),
         ),
         body: Container(
-          padding: EdgeInsets.fromLTRB(10, 50, 10, 10), //内边距
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 10), //内边距
           alignment: Alignment.center, //内容位置
           decoration: BoxDecoration(
           image: DecorationImage(

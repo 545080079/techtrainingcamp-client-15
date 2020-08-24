@@ -67,7 +67,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               )
           ),BottomNavigationBarItem(
               icon: Icon(
-                Icons.ac_unit,
+                Icons.beach_access,
                 color: _bottomNavigationColor,
               ),
               title: Text(

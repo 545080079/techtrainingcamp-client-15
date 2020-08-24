@@ -23,15 +23,31 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_clock_helper:
+    path: ../flutter_clock_helper
+  flutter_localizations:
+    sdk: flutter
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
+  flutter_local_notifications: ^0.9.1
+  english_words: ^3.1.5
+  shared_preferences: ^0.5.8
+  audioplayers: ^0.15.1
+  dio: ^3.0.4
+  intl: 0.16.1
+  fluttertoast: ^4.0.1
+  mobx: ^0.3.9+1
+  flutter_mobx: ^0.3.3+1
+  easy_localization: 1.3.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mobx_codegen: ^0.3.10
+  build_runner: ^1.5.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -45,10 +61,27 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+   - images/b1_rainy.gif
+   - images/b1_sunny.gif
+   - images/b2_sunny.gif
+   - images/b3_sunny.gif
+   - images/water.jpg
+   - images/sun.jpg
 
+   - images/alarm_1.gif
+
+   - assets/audio/1.mp3
+   - assets/audio/2.mp3
+   - assets/audio/3.mp3
+   - assets/audio/4.mp3
+   - assets/audio/5.mp3
+
+   - assets/images/
+   - assets/images/weather/
+   - assets/weathernow/
+   - assets/langs/zh-CN.json
+   - assets/langs/en-US.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -74,3 +107,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Lemonada
+      fonts:
+        - asset: assets/Lemonada-VariableFont_wght.ttf
+
+    - family: Math
+      fonts:
+        - asset: assets/mathDef-1.ttf
+          style: italic
