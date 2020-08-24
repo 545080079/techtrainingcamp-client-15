@@ -5,7 +5,7 @@ import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart'
 import 'package:techtrainingcamp_client_15/weather/d9l.dart';
 import 'package:techtrainingcamp_client_15/weather/sp_client.dart';
 import 'package:techtrainingcamp_client_15/weather/home_page_store.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([SpClient.getInstance()]).then((_) async {
@@ -21,6 +21,7 @@ void main() {
 
 class ClockApp extends StatelessWidget {
   // This widget is the root of your application.
+  static GlobalKey<NavigatorState> navigatorKey=GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,9 @@ class ClockApp extends StatelessWidget {
         title: 'My Clock',
         debugShowCheckedModeBanner: false, //不显示debug图标
         theme: ThemeData.light(),
-        home: BottomNavigationWidget()
+        home: BottomNavigationWidget(),
+        navigatorKey:navigatorKey,
+
     );
   }
 

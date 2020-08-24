@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-
 import 'alarm_data.dart';
 import 'ring_play_page.dart';
-
+import '../main.dart';
 /*
  闹钟定时器管理
  */
@@ -14,10 +13,10 @@ class TimerManager{
   static Map<String,Timer> _repeatTimerMap = new Map();
 
   // 当天时间、重复播放闹钟
-  static _repeatRing(context,AlarmData alarm) {
+  static _repeatRing(AlarmData alarm) {
     if (!alarm.isOpen) return;
     //  播放音乐
-    _playMusic(context,alarm);
+    _playMusic(alarm);
     print("第1次响铃:${alarm.name},${DateTime.now().toString()}");
     // 回调多次，实现重复响铃
     int count = 1;
@@ -33,16 +32,16 @@ class TimerManager{
       else{
         count++;
         // 播放音乐
-        _playMusic(context,alarm);
+        _playMusic(alarm);
         print("第$count次响铃:${alarm.name},${DateTime.now().toString()}");
       }
     });
   }
 
   // 设置闹钟
-  static void setAlarmTimer(context,AlarmData alarm) {
+  static String setAlarmTimer(AlarmData alarm) {
     alarm = alarm;
-    if (!alarm.isOpen) return;
+    if (!alarm.isOpen) return "";
     DateTime curTime = DateTime.now();
     DateTime firstTime;//第一次启动时间
     if (curTime.hour < alarm.time.hour || (curTime.hour == alarm.time.hour && curTime.minute < alarm.time.minute)) {
@@ -54,27 +53,28 @@ class TimerManager{
 //    print('闹钟在：${firstTime.difference(curTime)}后响铃'); //  比较两个时间 差 小时数
     Duration durationTemp = firstTime.difference(curTime);
     print(durationTemp.toString());
-    Scaffold.of(context).hideCurrentSnackBar();
-    Scaffold.of(context).showSnackBar(
-      SnackBar(
-        //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
-        backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
-        duration: Duration(milliseconds: 500),
-        content: Text('${durationTemp.inHours}:${durationTemp.inMinutes-durationTemp.inHours*60}:${durationTemp.inSeconds-durationTemp.inMinutes*60}后响铃',style:TextStyle(fontSize: 18),),
-      )
-    );
+    String durationText ='${durationTemp.inHours}:${durationTemp.inMinutes-durationTemp.inHours*60}:${durationTemp.inSeconds-durationTemp.inMinutes*60}后响铃';
+//    Scaffold.of(ClockApp.navigatorKey.currentState.context).hideCurrentSnackBar();
+//    Scaffold.of(ClockApp.navigatorKey.currentState.context).showSnackBar(
+//      SnackBar(
+//        //padding:EdgeInsets.fromLTRB(120, 0, 0, 0),
+//        backgroundColor: Color.fromRGBO(0, 0, 0, 0.0),
+//        duration: Duration(milliseconds: 500),
+//        content: Text('${durationTemp.inHours}:${durationTemp.inMinutes-durationTemp.inHours*60}:${durationTemp.inSeconds-durationTemp.inMinutes*60}后响铃',style:TextStyle(fontSize: 18),),
+//      )
+//    );
 
     Duration cur2Target = firstTime.difference(curTime);
     Timer.periodic(cur2Target, (timer) {
       _firstTimerMap[alarm.alarmID] = timer;
       // 第一次启动
-      _repeatRing(context,alarm);
+      _repeatRing(alarm);
       //前面通过cur2Target定时器，将时间对整，之后每天看一下是否需要启动闹钟
       var dayDuration = Duration(seconds: 24 * 60 * 60);
       Timer.periodic(dayDuration, (timer) {
         _weekTimerMap[alarm.alarmID] = timer;
         if (alarm.isOpen && alarm.repeat[AlarmData.getWeekdayStr(DateTime.now())]) { // 判断一下是否需要启动
-          _repeatRing(context,alarm);
+          _repeatRing(alarm);
         }
       });
       if(timer.isActive) {
@@ -82,10 +82,11 @@ class TimerManager{
         timer = null;
       }
     });
+    return durationText;
   }
 
   // 取消闹钟
-  static void cancelAlarmTimer(context,String alarmID) {
+  static void cancelAlarmTimer(String alarmID) {
     if(_firstTimerMap.containsKey(alarmID)){
       if(_firstTimerMap[alarmID].isActive){
         _firstTimerMap[alarmID].cancel();
@@ -107,8 +108,8 @@ class TimerManager{
     print("取消闹钟：$alarmID");
   }
 
-  static _playMusic(context,AlarmData alarm){
-    Navigator.of(context).push(
+  static _playMusic(AlarmData alarm){
+    Navigator.of(ClockApp.navigatorKey.currentState.context).push(
         MaterialPageRoute(
             builder: (context) {
               return RingPlayPage(alarm);
@@ -117,3 +118,4 @@ class TimerManager{
     );
   }
 }
+
