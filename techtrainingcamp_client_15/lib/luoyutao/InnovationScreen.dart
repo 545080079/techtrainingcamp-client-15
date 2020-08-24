@@ -13,6 +13,7 @@ class WeatherScreen extends StatelessWidget {
     return EasyLocalizationProvider(
       data: data,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false, //不显示debug图标
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

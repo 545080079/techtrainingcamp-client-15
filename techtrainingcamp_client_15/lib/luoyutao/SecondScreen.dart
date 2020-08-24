@@ -22,6 +22,7 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, //不显示debug图标
       title: "drawn clock",
       home: DrawnClock(),
     );
