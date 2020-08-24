@@ -1,18 +1,10 @@
+import 'package:easy_localization/easy_localization_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart';
 import 'package:techtrainingcamp_client_15/weather/d9l.dart';
-import 'package:techtrainingcamp_client_15/weather/home_page.dart';
 import 'package:techtrainingcamp_client_15/weather/sp_client.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:techtrainingcamp_client_15/weather/home_page_store.dart';
-
-import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart';
-
-
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

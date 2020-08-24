@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86c9efd4-798e-476f-bd1c-f1d20c90bb61" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/BottomNavigationWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/BottomNavigationWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/DrawnHand.dart" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/DrawnHand.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/InnovationScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/InnovationScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/backgroundView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/luoyutao/backgroundView.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techtrainingcamp_client_15/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/techtrainingcamp_client_15/pubspec.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
