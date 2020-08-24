@@ -297,11 +297,8 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                     Align(
                         alignment: Alignment.centerRight,
                         child: Container(
-                          child: Text(_alarmData.transRepeat2Str(),
-                            style: _textStyleLarge,
-                            overflow: TextOverflow.ellipsis, //文本过长时的显示方式
-                            maxLines: 1,),
-                          padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
+                          child: Text(_alarmData.transRepeat2Str(), style: _textStyleLarge),
+                          padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
                         )
                     ),
                     Align(
@@ -351,11 +348,8 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                         Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              child: Text(_alarmData.ringName,
-                                style: _textStyleLarge,
-                                overflow: TextOverflow.ellipsis, //文本过长时的显示方式
-                                maxLines: 1,),
-                              padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
+                              child: Text(_alarmData.ringName, style: _textStyleLarge),
+                              padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
                             )
                         ),
                         Align(
@@ -473,11 +467,8 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
                         Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              child: Text(_alarmData.name,
-                                style: _textStyleLarge,
-                                overflow: TextOverflow.ellipsis, //文本过长时的显示方式
-                                maxLines: 1,),
-                              padding: EdgeInsets.fromLTRB(120, 0, 25, 0),
+                              child: Text(_alarmData.name, style: _textStyleLarge),
+                              padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
                             )
                         ),
                         Align(

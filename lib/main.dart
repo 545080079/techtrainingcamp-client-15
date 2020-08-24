@@ -9,11 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:techtrainingcamp_client_15/weather/home_page_store.dart';
 
-import 'package:techtrainingcamp_client_15/luoyutao/BottomNavigationWidget.dart';
-
-
-
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Future.wait([SpClient.getInstance()]).then((_) async {
