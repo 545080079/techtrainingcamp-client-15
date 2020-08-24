@@ -7,9 +7,6 @@ import 'package:techtrainingcamp_client_15/luoyutao/ClockScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/InnovationScreen.dart';
 import 'package:techtrainingcamp_client_15/luoyutao/SecondScreen.dart';
 
-import 'package:techtrainingcamp_client_15/luoyutao/TimerScreen.dart';
-import 'package:techtrainingcamp_client_15/weather/home_page.dart';
-
 
 
 class BottomNavigationWidget extends StatefulWidget {
@@ -67,7 +64,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               )
           ),BottomNavigationBarItem(
               icon: Icon(
-                Icons.beach_access,
+                Icons.ac_unit,
                 color: _bottomNavigationColor,
               ),
               title: Text(
