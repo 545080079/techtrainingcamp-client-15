@@ -23,7 +23,7 @@ class _AlarmDetailPage extends State<AlarmDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("编辑闹钟",style: _textStyleLarge,),
+          title: Text("编辑闹钟",style: TextStyle(fontSize: 22,),),
           leading: IconButton(
             icon:Icon(Icons.arrow_back),
             onPressed: (){

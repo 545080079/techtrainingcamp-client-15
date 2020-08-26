@@ -208,7 +208,7 @@ class _AlarmPage extends State<AlarmPage> {
 //                      focusColor: Colors.amberAccent,
 //                      selectedTileColor: Colors.blue,
 //                      tileColor: Color.fromRGBO(255, 255, 255, 0.01),
-                      leading: Icon(_alarmDataList[index].isOpen? Icons.alarm_on:Icons.alarm_off, color: Colors.cyan,),
+                      leading: Icon(_alarmDataList[index].isOpen? Icons.alarm_on:Icons.alarm_off, color: _alarmDataList[index].isOpen? Colors.cyan:Colors.deepOrange,),
                       title: Text("${_alarmDataList[index].time
                           .hour}:${_alarmDataList[index].time.minute}",
                         style: _textStyleLarge,),
